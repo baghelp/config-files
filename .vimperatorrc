@@ -1,0 +1,31 @@
+" Vimperator config file
+
+"increase scroll speed
+noremap j 3j
+noremap k 3k
+
+"map backspace to go back one page
+nnoremap <BS> H
+
+"map shift-J to go one tab left, and shift-K to go one tab right
+nnoremap <S-j> gT
+nnoremap <S-k> <C-n>
+
+"map shift-U and shift-D to scroll up and down
+map <S-u> <C-u>
+map <S-d> <C-d>
+
+"make hints letters instead of numbers
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+
+"make fs toggle full screen
+set fs fs!
+
+"make command line autocomplete
+set wildmode autocomplete
+
+"show suggestions from history and bookmarks intelligently
+set cpt = l
+
+
+
