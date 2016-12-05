@@ -124,7 +124,9 @@ nmap ]<Enter> mko<Esc>`k
 nmap <Space> i<Space><Esc>
 
 " start editing at the very end of a line, after last character
-nmap I $a
+" nmap I $a
+" EDIT: this functionality is already in vim (yay!). type shift a (A) to start
+" editing at end of line. shift i (I) starts editing at beginning of line
 
 set pastetoggle=<F2>
 
