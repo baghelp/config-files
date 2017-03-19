@@ -1,4 +1,4 @@
-include<test_stand_parts.scad>
+use<test_stand_parts.scad>
 difference() {
     brace(52,50);
     rotate(a=90) secured_mortice(0,0);

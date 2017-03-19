@@ -4,7 +4,8 @@ bolt_diameter=5;
 bolt_thickness=1.6;
 mortice_hole_distance=10;
 mortice_width=10;
-material_thickness=4.1;
+material_thickness=2.55; // plywood
+// plexiglass material_thickness=4.1;
 
 
 include <test_stand_conf.scad>
@@ -41,8 +42,8 @@ module side(width, height, extension, extension_height) {
             translate([0,extension_height/2]) square(size=[width+2*extension, extension_height], center=true);  
         }  
         //secured_mortice(0,10, 0);
-        secured_mortice(-30,35, 60);
-        secured_mortice(30,35, -60);
+        secured_mortice(-20,35, 60);
+        secured_mortice(20,35, -60);
         //secured_mortice(0,50, 90);
         
         translate([0, 80]) {
@@ -160,8 +161,8 @@ module platform_2() {
         //translate([21,-6]) MotorDriver_rev1();
         //translate([-21,6]) rotate(a=180) MotorDriver_rev1();
         adafruit_quarter_perm_proto();
-        translate([-32,0]) prop_mount_holes();
-        translate([32,0]) prop_mount_holes();
+        translate([-35,0]) prop_mount_holes();
+        translate([35,0]) prop_mount_holes();
     }
 }
 
@@ -202,3 +203,4 @@ module prop_mount() {
 //adafruit_quarter_perm_proto();
 
 //platform_2();
+side(side_length, side_height, 40, 4);
