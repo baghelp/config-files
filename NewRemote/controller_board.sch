@@ -9066,8 +9066,14 @@ Groups of components that insist on having their own PCB. Usually requires heade
 <part name="J9" library="Components" deviceset="HEADER-0.1IN-3POS" device="-FEMALE"/>
 <part name="J10" library="Components" deviceset="HEADER-0.1IN-3POS" device="-FEMALE"/>
 <part name="F1" library="RemotePartsB" deviceset="SHORT" device=""/>
-<part name="C1" library="KoalaBuild" deviceset="RESOLVED-CAPACITOR-POL_" device="TH-RADIAL_ALUMINUM_18MM"/>
-<part name="C2" library="KoalaBuild" deviceset="RESOLVED-CAPACITOR-POL_" device="TH-RADIAL_ALUMINUM_6.3MM"/>
+<part name="C1" library="KoalaBuild" deviceset="RESOLVED-CAPACITOR-POL_" device="TH-RADIAL_ALUMINUM_18MM">
+<attribute name="DIST" value="Digikey"/>
+<attribute name="DISTPN" value="P5158-ND"/>
+</part>
+<part name="C2" library="KoalaBuild" deviceset="RESOLVED-CAPACITOR-POL_" device="TH-RADIAL_ALUMINUM_6.3MM">
+<attribute name="DIST" value="Digikey"/>
+<attribute name="DISTPN" value="P5152-ND"/>
+</part>
 <part name="+3V1" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="+3V8" library="supply1" deviceset="+3V3" device=""/>

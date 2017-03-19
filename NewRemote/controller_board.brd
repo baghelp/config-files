@@ -12833,7 +12833,7 @@ design rules under a new name.</description>
 </element>
 <element name="F1" library="RemotePartsB" package="SHORT" value="SHORT" x="-53" y="-17"/>
 <element name="C1" library="KoalaBuild" package="CAPPRD750W80D1800H2200P" value="" x="53" y="48.5" smashed="yes">
-<attribute name="DIST" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
+<attribute name="DIST" value="Digikey" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="MIN_QTY" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="PACKAGE" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="DB" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
@@ -12841,7 +12841,7 @@ design rules under a new name.</description>
 <attribute name="DATA_SHEET" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="IMAGE" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="STOCK" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
-<attribute name="DISTPN" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
+<attribute name="DISTPN" value="P5158-ND" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="VOLTS" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="DEVICE" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="DATASHEET" value="" x="53" y="48.5" size="1.27" layer="27" font="vector" display="off"/>
@@ -12854,7 +12854,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="53" y="51" size="2" layer="51" font="vector" ratio="10"/>
 </element>
 <element name="C2" library="KoalaBuild" package="CAPPRD250W80D630H1220P" value="" x="-36.5" y="51" smashed="yes">
-<attribute name="DIST" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
+<attribute name="DIST" value="Digikey" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="MIN_QTY" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="PACKAGE" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="DB" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
@@ -12862,7 +12862,7 @@ design rules under a new name.</description>
 <attribute name="DATA_SHEET" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="IMAGE" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="STOCK" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
-<attribute name="DISTPN" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
+<attribute name="DISTPN" value="P5152-ND" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="VOLTS" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="DEVICE" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
 <attribute name="DATASHEET" value="" x="-36.5" y="51" size="1.27" layer="27" font="vector" display="off"/>
