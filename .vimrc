@@ -1,6 +1,7 @@
 set nocompatible              " be iMproved, required
  filetype off                  " required
 
+if 0
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -62,6 +63,7 @@ filetype plugin indent on    " required
 " set syntax checkers for syntastic
 let g:syntastic_c_checkers = ['gcc', 'make']
 "let g:syntastic_enable_c_checker = 1
+:endif
 " vim config file
 " based heavily on other vimrc's i found on the internet, as well as vimrc's
 " from cse 11
