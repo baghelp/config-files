@@ -1,3 +1,67 @@
+set nocompatible              " be iMproved, required
+ filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+Plugin 'ascenator/L9', {'name': 'newL9'}
+
+"""""""""""""""""
+" Plugins I added
+" """""""""""""""
+" Better Autocomplete
+Plugin 'Valloric/YouCompleteMe'
+" Syntax checking
+Plugin 'scrooloose/syntastic'
+" quicker commenting
+Plugin 'tomtom/tcomment_vim'
+" better copy-pasting
+" Plugin 'svermeulen/vim-easyclip' "decided not to use because of extensive
+" remaps
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"""""""""""""""""""""""""
+" End of stuff for vundle
+"""""""""""""""""""""""""
+" set syntax checkers for syntastic
+let g:syntastic_c_checkers = ['gcc', 'make']
+"let g:syntastic_enable_c_checker = 1
 " vim config file
 " based heavily on other vimrc's i found on the internet, as well as vimrc's
 " from cse 11
@@ -37,7 +101,8 @@ set hlsearch
 
 set background=dark
 
-" change to elflord if embedded
+" default is ron, use something different for embedded work so you can tell the
+" terminals apart
 try
   colorscheme ron
 catch
@@ -93,7 +158,7 @@ set si "Smart indent
 
 " trying to make y and p work between vim sessions
 " didn't work :'(
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " show file info at bottom of vim
 set ls=2
@@ -111,7 +176,7 @@ map! jk <ESC>
 map! jj <ESC>
 
 " make tab autocomplete if in middle of word, and insert tab otherwise
-inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+"inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 " inserts line above cursor
 nmap [<Enter> mkO<Esc>`k
@@ -123,34 +188,42 @@ nmap ]<Enter> mko<Esc>`k
 " inserts space at cursor
 nmap <Space> i<Space><Esc>
 
-" start editing at the very end of a line, after last character
-" nmap I $a
-" EDIT: this functionality is already in vim (yay!). type shift a (A) to start
-" editing at end of line. shift i (I) starts editing at beginning of line
-
 set pastetoggle=<F2>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Autocompletion
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" filetype plugin on
+" autocmd FileType python set omnifunc=python3complete#Complete
+" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType c set omnifunc=ccomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 
 
 """""""""""""""""""
 "  Functions
 """""""""""""""""
-function! Smart_TabComplete()
-  let line = getline('.')                     " current line
-
-  let substr = strpart(line, -1, col('.')+1)  " from the start of the current
-                                              " line to one character right
-                                              " of the cursor
-  let substr = matchstr(substr, "[^ \t]*$")   " word till cursor
-  if (strlen(substr)==0)                      " nothing to match on empty string
-    return "\<tab>"
-  endif
-  let has_period = match(substr, '\.') != -1  " position of period, if any
-  let has_slash = match(substr, '\/') != -1   " position of slash, if any
-  if (!has_period && !has_slash)
-    return "\<C-X>\<C-P>"                     " existing text matching
-  elseif ( has_slash )
-    return "\<C-X>\<C-F>"                     " file matching
-  else
-    return "\<C-X>\<C-O>"                     " plugin matching
-  endif
-endfunction
+" function! Smart_TabComplete()
+"   let line = getline('.')                     " current line
+" 
+"   let substr = strpart(line, -1, col('.')+1)  " from the start of the current
+"                                               " line to one character right
+"                                               " of the cursor
+"   let substr = matchstr(substr, "[^ \t]*$")   " word till cursor
+"   if (strlen(substr)==0)                      " nothing to match on empty string
+"     return "\<tab>"
+"   endif
+"   let has_period = match(substr, '\.') != -1  " position of period, if any
+"   let has_slash = match(substr, '\/') != -1   " position of slash, if any
+"   if (!has_period && !has_slash)
+"     return "\<C-X>\<C-P>"                     " existing text matching
+"   elseif ( has_slash )
+"     return "\<C-X>\<C-F>"                     " file matching
+"   else
+"     return "\<C-X>\<C-O>"                     " plugin matching
+"   endif
+" endfunction
