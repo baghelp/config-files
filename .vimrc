@@ -78,8 +78,8 @@ command W w !sudo tee % > /dev/null
 
 " beginning of cse11 vimrc
 
-" wraps lines at 80 characters
-set textwidth=80
+" don't wrap lines at all
+set textwidth=0
 
 " set number of lines of context (default is 0)
 set so=5
@@ -149,10 +149,10 @@ set mat=2
 " Use spaces
 set expandtab
     
-" 1 tab = 2 spaces
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
+" 1 tab = 4 spaces
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 
 set ai "Auto indent
 set si "Smart indent
