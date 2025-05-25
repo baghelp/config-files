@@ -106,7 +106,7 @@ set background=dark
 " default is ron, use something different for embedded work so you can tell the
 " terminals apart
 try
-  colorscheme ron
+  colorscheme default
 catch
 endtry
 
@@ -159,8 +159,9 @@ set si "Smart indent
 
 
 " trying to make y and p work between vim sessions
-" didn't work :'(
-set clipboard=unnamed
+" didn't work :'(. Left in as a warning to future me -- probably not worth
+" trying this.
+" set clipboard=unnamed
 
 " show file info at bottom of vim
 set ls=2
