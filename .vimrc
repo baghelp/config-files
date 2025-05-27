@@ -1,72 +1,36 @@
 set nocompatible              " be iMproved, required
  filetype off                  " required
 
-if 0
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Have vim-plug install any plugins that are included but missing
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+"Plug 'girishji/vimcomplete'  " only works with neovim > 0.9, which I can't get
+"right now
+call plug#end()
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-Plugin 'ascenator/L9', {'name': 'newL9'}
+" Basic coc.nvim config
+" Use <Tab> for trigger completion and navigate to the next complete item
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
+let g:coc_disable_startup_warning = 1
 
-"""""""""""""""""
-" Plugins I added
-" """""""""""""""
-" Better Autocomplete
-Plugin 'Valloric/YouCompleteMe'
-" Syntax checking
-Plugin 'scrooloose/syntastic'
-" quicker commenting
-Plugin 'tomtom/tcomment_vim'
-" better copy-pasting
-" Plugin 'svermeulen/vim-easyclip' "decided not to use because of extensive
-" remaps
+" ALE config
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
 
+" vimcomplete minimal setup
+"let g:vimcomplete_enable = 1  " uncomment once I get nvim > 0.9
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-"""""""""""""""""""""""""
-" End of stuff for vundle
-"""""""""""""""""""""""""
-" set syntax checkers for syntastic
-let g:syntastic_c_checkers = ['gcc', 'make']
-"let g:syntastic_enable_c_checker = 1
-:endif
-" vim config file
-" based heavily on other vimrc's i found on the internet, as well as vimrc's
-" from cse 11
+" Enable filetype plugin indent
+filetype plugin indent on
+syntax on
 
 " how many lines of history VIM remembers
 set history=500
@@ -85,8 +49,7 @@ set textwidth=0
 set so=5
 
 " line numbers
-" set relativenumber
-" set number
+set number
 
 " linebreak on 80 chars
 set lbr
@@ -103,12 +66,8 @@ set hlsearch
 
 set background=dark
 
-" default is ron, use something different for embedded work so you can tell the
-" terminals apart
-try
-  colorscheme default
-catch
-endtry
+" I like the default colorscheme
+colorscheme default
 
 "everything past column 80 is dark red
 "let &colorcolumn=join(range(81,999),",")
