@@ -1,16 +1,24 @@
 #!/bin/bash
 
 # === Install NVM if not installed ===
-if ! command -v nvm >/dev/null 2>&1; then
-  echo -e "\n\nInstalling NVM...\n--------------\n"
-  export NVM_DIR="$HOME/.nvm"
-  mkdir -p "$NVM_DIR"
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-  source "$NVM_DIR/nvm.sh"
-  nvm install --lts
+#
+#
+# Only install Node on non-Pi machines
+if ! uname -m | grep -q 'aarch64'; then
+  if [ ! -d "$HOME/.nvm" ]; then
+    echo -e "\n\nInstalling NVM...\n--------------\n"
+    export NVM_DIR="$HOME/.nvm"
+    mkdir -p "$NVM_DIR"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    source "$NVM_DIR/nvm.sh"
+    nvm install --lts
+  else
+    echo -e "\n\nNVM already installed\n--------------\n"
+  fi
 else
-  echo -e "\n\nNVM already installed\n--------------\n"
+  echo -e "\n\nSkipping NVM (Pi detected)...\n--------------\n"
 fi
+
 
 # === Install Neovim via apt (may not be latest version) ===
 if ! command -v nvim >/dev/null 2>&1; then

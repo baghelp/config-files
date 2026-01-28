@@ -8,22 +8,34 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Always install ALE
 Plug 'dense-analysis/ale'
-"Plug 'girishji/vimcomplete'  " only works with neovim > 0.9, which I can't get
-"right now
+
+" Only install CoC on non-Pi machines (Pi is aarch64)
+let s:is_pi = (system('uname -m') =~ 'aarch64' || hostname() =~ 'raspberrypi')
+if !s:is_pi
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
+
 call plug#end()
 
-" Basic coc.nvim config
-" Use <Tab> for trigger completion and navigate to the next complete item
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
-let g:coc_disable_startup_warning = 1
-
-" ALE config
+" ALE config (always runs)
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
+
+" CoC config (only if loaded)
+if !s:is_pi && exists('g:did_coc_loaded')
+  inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
+  let g:coc_disable_startup_warning = 1
+else
+  " Fallback to ALE completion on Pi
+  let g:ale_completion_enabled = 1
+  set omnifunc=ale#completion#OmniFunc
+  inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+endif
 
 " vimcomplete minimal setup
 "let g:vimcomplete_enable = 1  " uncomment once I get nvim > 0.9

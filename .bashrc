@@ -10,7 +10,7 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -90,7 +90,7 @@ fi
 # some more ls aliases
 alias ll='ls -l'
 alias la='ls -A'
-#alias l='ls -CF'
+alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -112,13 +112,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Run all my specific setup stuff
-if [ ! -f "$HOME/.setup_complete" ]; then
+# Run specific setup scripts (this is purely a matter of preference, not
+# essential for operation)
+if [ ! -f "$HOME/.bash_setup_complete" ]; then
   bash "$HOME/setup-env.sh"
-  touch "$HOME/.setup_complete"
+  touch "$HOME/.bash_setup_complete"
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="$HOME/.local/bin:$PATH"
